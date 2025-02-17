@@ -5,14 +5,15 @@
 # LICENSE file in the root directory of this source tree.
 
 import numpy as np
-
+import pdb
 from muss.resources.paths import LASER_DIR
 from muss.preprocessing import get_parallel_file_preprocessor
 from muss.utils.training import clear_cuda_cache
 from muss.utils.helpers import write_lines, get_temp_filepath, generalized_lru_cache, read_lines, log_action, mute
 from muss.resources.prepare import prepare_laser
 
-ENCODER_PATH = LASER_DIR / 'models/bilstm.93langs.2018-12-26.pt'
+# ENCODER_PATH = LASER_DIR / 'models/bilstm.93langs.2018-12-26.pt'
+ENCODER_PATH = LASER_DIR / 'nllb/laser3-sin_Sinh.v1.pt'
 BPE_CODES_PATH = LASER_DIR / 'models/93langs.fcodes'
 
 
@@ -22,7 +23,7 @@ def get_laser_embeddings(
     sentences,
     bpe_codes_path=BPE_CODES_PATH,
     encoder_path=ENCODER_PATH,
-    language='en',
+    language='sin_Sinh',
     max_tokens=6000,
     normalize_l2=False,
     n_encoding_jobs=10,
